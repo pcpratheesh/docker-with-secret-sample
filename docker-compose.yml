@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  app:
+    build: .
+    secrets:
+      - db_user
+      - db_password
+      - db_host
+    ports:
+      - "8080:8080"
+      
+volumes:
+  mysecrets:
+    external: true
+
+secrets:
+  db_user:
+    file: secrets/db_user.txt
+  db_password:
+    file: secrets/db_password.txt
+  db_host:
+    file: secrets/db_host.txt
